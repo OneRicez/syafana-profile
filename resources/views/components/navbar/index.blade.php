@@ -2,8 +2,8 @@
 <nav x-data="{ openSidebar: false, scrolled: false, mobileDropdowns: {} }" 
      x-cloak
      @scroll.window="scrolled = (window.pageYOffset > 0)"
-     class="sticky top-0 z-50 transition-shadow duration-300 bg-[#006CB5] text-white"
-     :class="{ 'shadow-lg': scrolled }"
+     class="sticky w-100 top-0 z-50 transition-shadow duration-300 bg-[#006CB5] text-white"
+     :class="{'bg-[#006CB5]/95 shadow-lg': scrolled }"
 >
     <div class="container mx-auto px-3 lg:xl:px-10 flex justify-between items-center font-bold">
         {{-- Logo --}}
@@ -11,34 +11,47 @@
         
         {{-- Navbar Links - Desktop with Hover --}}
         <div class="hidden lg:flex space-x-8">
-            <a href="{{ route('home') }}" 
-                class="relative hover:text-gray-200 px-2 py-4">
-                Home
-                @if(Route::is('home'))
+            <div class="relative group">
+                <div class="px-2 py-4 hover:text-gray-200">
+                    <a href="{{ route('home') }}" >
+                        Home
+                    </a>
+                </div>
+                <span class="absolute bottom-0 left-0 right-0 h-1 bg-yellow-500 rounded transform scale-x-0 transition-transform duration-200 ease-out group-hover:scale-x-100"></span>
+                @if (Route::is('home'))
                     <span class="absolute bottom-0 left-0 right-0 h-1 bg-yellow-500 rounded"></span>
                 @endif
-            </a>
-            <div class="relative group">
+            </div>
+
+            <div class="relative group"> 
                 <div class="px-2 py-4 hover:text-gray-200">
                     <a href="{{ route('about') }}" >
                         About
                     </a>
                 </div>
+                @if (Route::is('about'))
+                    <span class="absolute bottom-0 left-0 right-0 h-1 bg-yellow-500 rounded"></span>
+                @endif
                 <span class="absolute bottom-0 left-0 right-0 h-1 bg-yellow-500 rounded transform scale-x-0 transition-transform duration-200 ease-out group-hover:scale-x-100"></span>
                 <div class="absolute left-0 hidden group-hover:block pt-2">
                     <div class="bg-white rounded-md shadow-lg py-2 w-48">
                         
-                        <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">History</a>
-                        <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Vision & Mission</a>
-                        <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Welcome</a>
-                        <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Organizational Structure</a>
+                        <a href="{{route('about')}}#history" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">History</a>
+                        <a href="#vision_mission" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Vision & Mission</a>
+                        <a href="#welcome" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Welcome</a>
+                        <a href="#orgstructure" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Organizational Structure</a>
                     </div>
                 </div>
             </div>
             <div class="relative group">
-                <button class="px-2 py-4 hover:text-gray-200">
-                    Academic
-                </button>
+                <div class="px-2 py-4 hover:text-gray-200">
+                    <a href="{{route('academic')}}" >
+                        Academic
+                    </a>
+                </div>
+                @if (Route::is('academic'))
+                    <span class="absolute bottom-0 left-0 right-0 h-1 bg-yellow-500 rounded"></span>
+                @endif
                 <span class="absolute bottom-0 left-0 right-0 h-1 bg-yellow-500 rounded transform scale-x-0 transition-transform duration-200 ease-out group-hover:scale-x-100"></span>
                 <div class="absolute left-0 hidden group-hover:block pt-2">
                     <div class="bg-white rounded-md shadow-lg py-2 w-48">
@@ -80,7 +93,7 @@
         </div>
 
         {{-- Enroll Now Button --}}
-        <a href="#" class="bg-[#44AF69] px-8 py-4 hidden lg:flex">ENROLL NOW</a>
+        <a href="#" class="bg-[#44AF69] px-8 py-4 hidden lg:flex" :class="{'bg-[#44AF69]/95 shadow-lg': scrolled }">ENROLL NOW</a>
 
         {{-- Hamburger --}}
         <div class="lg:hidden justify-end flex py-2 px-2">

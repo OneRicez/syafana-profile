@@ -2,11 +2,11 @@
 
 @section('title', 'Home - Syafana Islamic School')
 
-  @section('navbar')
+  {{-- @section('navbar')
   <!-- Navbar --> 
-  <x-navbar x-cloak >
+  <x-navbar x-cloak > 
     <x-slot:logo>
-        {{-- Your logo here --}}
+        Your logo here
     </x-slot>
     
     <x-slot:title>
@@ -34,10 +34,10 @@
             class="block px-3 py-4 border-b border-gray-200  last:border-b-0 rounded @if(Route::is('home')) @endif">
             Download
         </a>
-        {{-- Add more mobile menu items --}}
+        Add more mobile menu items
     </x-slot>
   </x-navbar>
-  @endsection
+  @endsection --}}
 
   @section('content')
   <x-carousel :slides="[
