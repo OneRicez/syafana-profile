@@ -57,11 +57,11 @@
         <span>FACILITIES</span>
         <img src="{{ asset('icons/facilities.svg') }}" class="h-10 w-10 mt-2" alt="Facilities Icon" />
       </a>
-      <a href="#" class="bg-[#62D3C7] font-bold py-6 rounded-md text-center w-[150px] border-transparent border-2 hover:border-[#46AAA6] hover:shadow-xl hover:-translate-y-1 flex flex-col items-center">
+      <a href="{{route('gallery')}}" class="bg-[#62D3C7] font-bold py-6 rounded-md text-center w-[150px] border-transparent border-2 hover:border-[#46AAA6] hover:shadow-xl hover:-translate-y-1 flex flex-col items-center">
         <span>GALLERY</span>
         <img src="{{ asset('icons/gallery.svg') }}" class="h-10 w-10 mt-2" alt="Gallery Icon" />
       </a>
-      <a href="#" class="bg-[#62D3C7] font-bold py-6 rounded-md text-center w-[150px] border-transparent border-2 hover:border-[#46AAA6] hover:shadow-xl hover:-translate-y-1 flex flex-col items-center">
+      <a href="{{route('academic')}}" class="bg-[#62D3C7] font-bold py-6 rounded-md text-center w-[150px] border-transparent border-2 hover:border-[#46AAA6] hover:shadow-xl hover:-translate-y-1 flex flex-col items-center">
         <span>ACADEMIC</span>
         <img src="{{ asset('icons/academic.svg') }}" class="h-10 w-10 mt-2" alt="Academic Icon" />
       </a>

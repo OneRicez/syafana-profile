@@ -37,9 +37,9 @@
                     <div class="bg-white rounded-md shadow-lg py-2 w-48">
                         
                         <a href="{{route('about')}}#history" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">History</a>
-                        <a href="#vision_mission" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Vision & Mission</a>
-                        <a href="#welcome" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Welcome</a>
-                        <a href="#orgstructure" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Organizational Structure</a>
+                        <a href="{{route('about')}}#vision_mission" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Vision & Mission</a>
+                        <a href="{{route('about')}}#welcome" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Welcome</a>
+                        <a href="{{route('about')}}#orgstructure" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Organizational Structure</a>
                     </div>
                 </div>
             </div>
@@ -55,24 +55,25 @@
                 <span class="absolute bottom-0 left-0 right-0 h-1 bg-yellow-500 rounded transform scale-x-0 transition-transform duration-200 ease-out group-hover:scale-x-100"></span>
                 <div class="absolute left-0 hidden group-hover:block pt-2">
                     <div class="bg-white rounded-md shadow-lg py-2 w-48">
-                        <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Kindergarten</a>
-                        <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Primary</a>
-                        <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Secondary</a>
+                        <a href="{{route('academic.kindergarten')}}" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Kindergarten</a>
+                        <a href="{{route('academic.primary')}}" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Primary</a>
+                        <a href="{{route('academic.secondary')}}" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Secondary</a>
                         <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Boarding School</a>
                     </div>
                 </div>
             </div>
             <div class="relative group">
-                <button class="px-2 py-4 hover:text-gray-200">
+                <div class="px-2 py-4 hover:text-gray-200 cursor-default">
                     Explore
-                </button>
+                </div>
                 <span class="absolute bottom-0 left-0 right-0 h-1 bg-yellow-500 rounded transform scale-x-0 transition-transform duration-200 ease-out group-hover:scale-x-100"></span>
                 <div class="absolute left-0 hidden group-hover:block pt-2">
                     <div class="bg-white rounded-md shadow-lg py-2 w-48">
                         <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">E-Learning</a>
                         <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Teacher's Daily Health Monitoring</a>
+                        <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">E-Library</a>
                         <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Special Program</a>
-                        <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Gallery</a>
+                        <a href="{{route('gallery')}}" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Gallery</a>
                         <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Facilities</a>
                     </div>
                 </div>
