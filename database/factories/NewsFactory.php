@@ -20,6 +20,7 @@ class NewsFactory extends Factory
             'image' => $this->faker->imageUrl(640, 480, 'news', true),
             'category' => $this->faker->randomElement(['tech', 'sports', 'entertainment']),
             'author' => $this->faker->name(),
+            'status' => 'published',
             'created_at' => now(),
             'updated_at' => now(),
         ];

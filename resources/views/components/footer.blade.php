@@ -12,7 +12,7 @@
 
   <!-- Main container div: holds the entire content of the footer, including four sections (TW Elements, Products, Useful links, and Contact), with responsive styling and appropriate padding/margins. -->
   <div class="mx-1 lg:mx-10 py-10 text-left lg:text-center">
-    <div class="grid lg:grid-cols-12/22/22/22/22 grid-cols-20/40/40 space-x-2 lg:gap-x-6">
+    <div class="grid lg:grid-cols-12/22/22/22/22 grid-cols-20/40/40 space-x-2">
       <div class="flex flex-col font-bold text-base lg:text-xl py-4 pl-2">
         <a href="#" class="mb-2">Home</a>
         <a href="#" class="mb-2">Contact</a>
