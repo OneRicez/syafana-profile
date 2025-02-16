@@ -11,15 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('news', function (Blueprint $table) {
+        Schema::create('comments', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->string('slug');
-            $table->text('content');
-            $table->string('image')->nullable();
-            $table->string('category');
-            $table->string('author');
-            $table->enum('status',['draft', 'published', 'takendown']);
+            $table->string('email');
+            $table->string('name');
+            $table->string('content');
+            $table->string('website')->nullable();
+            $table->string('news_id');
+            $table->enum('status',['approved','unapproved','pending'])->default('pending');
+            
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('news');
+        Schema::dropIfExists('comments');
     }
 };

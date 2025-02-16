@@ -14,18 +14,18 @@
   <div class="mx-1 lg:mx-10 py-10 text-left lg:text-center">
     <div class="grid lg:grid-cols-12/22/22/22/22 grid-cols-20/40/40 space-x-2">
       <div class="flex flex-col font-bold text-base lg:text-xl py-4 pl-2">
-        <a href="#" class="mb-2">Home</a>
-        <a href="#" class="mb-2">Contact</a>
-        <a href="#" class="mb-2">Enroll</a>
+        <a href="{{route('home')}}" class="mb-2 hover:underline">Home</a>
+        <a href="{{route('home')}}" class="mb-2 hover:underline">Contact</a>
+        <a href="{{route('home')}}" class="mb-2 hover:underline">Enroll</a>
       </div>
       
       <!-- About section -->
       <div class="text-sm lg:text-base py-4">
         <h6 class="mb-3 font-semibold uppercase">About</h6>
-        <p class="mb-1"><a href="#!">History</a></p>
-        <p class="mb-1"><a href="#!">Vision & Mission</a></p>
-        <p class="mb-1"><a href="#!">Welcome</a></p>
-        <p><a href="#!">Organizational Structure</a></p>
+        <p class="mb-1"><a href="{{route('about')}}">History</a></p>
+        <p class="mb-1"><a href="{{route('about')}}#vision_mission">Vision & Mission</a></p>
+        <p class="mb-1"><a href="{{route('about')}}#welcome">Welcome</a></p>
+        <p><a href="{{route('about')}}#orgstructure">Organizational Structure</a></p>
       </div>
       <!-- Products section -->
       <div class="text-sm lg:text-base py-4">

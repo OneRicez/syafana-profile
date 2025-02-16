@@ -70,7 +70,6 @@
                 <div class="absolute left-0 hidden group-hover:block pt-2">
                     <div class="bg-white rounded-md shadow-lg py-2 w-48">
                         <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">E-Learning</a>
-                        <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Teacher's Daily Health Monitoring</a>
                         <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">E-Library</a>
                         <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Special Program</a>
                         <a href="{{route('gallery')}}" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Gallery</a>
@@ -129,36 +128,121 @@
                     {{-- Mobile Menu Items --}}
                     <a href="{{ route('home') }}" class="block py-2 hover:text-blue-600">Home</a>
                     
-                    {{-- Mobile Dropdown Items --}}
-                    @foreach(['About', 'Academic', 'Explore', 'Download'] as $menuItem)
-                        <div x-data="{ open: false }">
-                            <button 
-                                @click="open = !open" 
-                                class="flex items-center justify-between w-full py-2 hover:text-blue-600"
+                    <div x-data="{ open: false }">
+                        <button 
+                            @click="open = !open" 
+                            class="flex items-center justify-between w-full py-2 hover:text-blue-600"
+                        >
+                            <span>About</span>
+                            <svg 
+                                class="w-4 h-4 transition-transform"
+                                :class="{'rotate-180': open}"
+                                fill="none" 
+                                stroke="currentColor" 
+                                viewBox="0 0 24 24"
                             >
-                                <span>{{ $menuItem }}</span>
-                                <svg 
-                                    class="w-4 h-4 transition-transform"
-                                    :class="{'rotate-180': open}"
-                                    fill="none" 
-                                    stroke="currentColor" 
-                                    viewBox="0 0 24 24"
-                                >
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-                                </svg>
-                            </button>
-                            {{-- Mobile Dropdown Content --}}
-                            <div 
-                                x-show="open"
-                                x-collapse
-                                class="pl-4"
-                            >
-                                <a href="#" class="block py-2 hover:text-blue-600">Service 1</a>
-                                <a href="#" class="block py-2 hover:text-blue-600">Service 2</a>
-                                <a href="#" class="block py-2 hover:text-blue-600">Service 3</a>
-                            </div>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                            </svg>
+                        </button>
+                        {{-- Mobile Dropdown Content --}}
+                        <div 
+                            x-show="open"
+                            x-collapse
+                            class="pl-4"
+                        >
+                            <a href="{{route('about')}}#history" class="block py-2 hover:text-blue-600">History</a>
+                            <a href="{{route('about')}}#vision_mission" class="block py-2 hover:text-blue-600">Vision & Mission</a>
+                            <a href="{{route('about')}}#welcome" class="block py-2 hover:text-blue-600">Welcome</a>
+                            <a href="{{route('about')}}#orgstruc" class="block py-2 hover:text-blue-600">Organizational Structure</a>
                         </div>
-                    @endforeach
+                    </div>
+
+                    <div x-data="{ open: false }">
+                        <button 
+                            @click="open = !open" 
+                            class="flex items-center justify-between w-full py-2 hover:text-blue-600"
+                        >
+                            <span>Academic</span>
+                            <svg 
+                                class="w-4 h-4 transition-transform"
+                                :class="{'rotate-180': open}"
+                                fill="none" 
+                                stroke="currentColor" 
+                                viewBox="0 0 24 24"
+                            >
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                            </svg>
+                        </button>
+                        {{-- Mobile Dropdown Content --}}
+                        <div 
+                            x-show="open"
+                            x-collapse
+                            class="pl-4"
+                        >
+                            <a href="{{route('academic.kindergarten')}}" class="block py-2 hover:text-blue-600">Kindergarten</a>
+                            <a href="{{route('academic.primary')}}" class="block py-2 hover:text-blue-600">Primary</a>
+                            <a href="{{route('academic.secondary')}}" class="block py-2 hover:text-blue-600">Secondary</a>
+                            <a href="{{route('academic')}}" class="block py-2 hover:text-blue-600">Boarding School</a>
+                        </div>
+                    </div>
+
+                    <div x-data="{ open: false }">
+                        <button 
+                            @click="open = !open" 
+                            class="flex items-center justify-between w-full py-2 hover:text-blue-600"
+                        >
+                            <span>Explore</span>
+                            <svg 
+                                class="w-4 h-4 transition-transform"
+                                :class="{'rotate-180': open}"
+                                fill="none" 
+                                stroke="currentColor" 
+                                viewBox="0 0 24 24"
+                            >
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                            </svg>
+                        </button>
+                        {{-- Mobile Dropdown Content --}}
+                        <div 
+                            x-show="open"
+                            x-collapse
+                            class="pl-4"
+                        >
+                            <a href="#" class="block py-2 hover:text-blue-600">E-Learning</a>
+                            <a href="#" class="block py-2 hover:text-blue-600">E-Library</a>
+                            <a href="#" class="block py-2 hover:text-blue-600">Special Program</a>
+                            <a href="#" class="block py-2 hover:text-blue-600">Gallery</a>
+                            <a href="#" class="block py-2 hover:text-blue-600">Facilities</a>
+                        </div>
+                    </div>
+
+                    <div x-data="{ open: false }">
+                        <button 
+                            @click="open = !open" 
+                            class="flex items-center justify-between w-full py-2 hover:text-blue-600"
+                        >
+                            <span>Download</span>
+                            <svg 
+                                class="w-4 h-4 transition-transform"
+                                :class="{'rotate-180': open}"
+                                fill="none" 
+                                stroke="currentColor" 
+                                viewBox="0 0 24 24"
+                            >
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                            </svg>
+                        </button>
+                        {{-- Mobile Dropdown Content --}}
+                        <div 
+                            x-show="open"
+                            x-collapse
+                            class="pl-4"
+                        >
+                            <a href="#" class="block py-2 hover:text-blue-600">File</a>
+                            <a href="#" class="block py-2 hover:text-blue-600">S-Digest</a>
+                            <a href="#" class="block py-2 hover:text-blue-600">Brochure</a>
+                        </div>
+                    </div>
 
                     {{-- Mobile Enroll Button --}}
                     <div class="mt-4">

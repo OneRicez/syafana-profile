@@ -32,14 +32,14 @@
     <!-- News Grid -->
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 p-6">
-      @foreach ($news as $item)
+      @foreach ($news as $article)
           <x-news-item 
-              :title="$item->title" 
-              :author="$item->author" 
-              :image="$item->image" 
-              :date="$item->created_at->format('d m Y')" 
-              :url="'#'" 
-          />
+          :title="$article->title"
+          :author="$article->author"
+          :image="$article->image"
+          :date="$article->updated_at->format('d M Y')"
+          :url="'/news/' . $article['slug']"
+      />
       @endforeach
   </div>
   

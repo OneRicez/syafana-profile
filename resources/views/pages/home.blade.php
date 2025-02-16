@@ -72,51 +72,79 @@
 
   <div class="w-full h-[60vh] overflow-hidden relative px-10 my-5" >
     <iframe width="100%" height="100%" 
-    src="https://www.youtube.com/embed/tgbNymZ7vqY?autoplay=0&mute=1">
+    src="">
     </iframe> 
   </div>
 
-  @php 
-      $newsArticles = [
-        ['title' => 'Test 1', 'author' => 'John Doe', 'image' => '#','date' => '01 13 2025', 'slug' => 'test-1'],
-        ['title' => 'Test 2', 'author' => 'John Doe', 'image' => '#','date' => '01 13 2025', 'slug' => 'test-2'],
-        ['title' => 'Test 2', 'author' => 'John Doe', 'image' => '#','date' => '01 13 2025', 'slug' => 'test-2'],
-        ['title' => 'Test 2', 'author' => 'John Doe', 'image' => '#','date' => '01 13 2025', 'slug' => 'test-2'],
-      ];
-  @endphp
-  <x-news-layout>
-      @slot('newsGrid')
-          @foreach($newsArticles as $article)
-              <x-news-item 
-                  :title="$article['title']"
-                  :author="$article['author']"
-                  :image="$article['image']"
-                  :date="$article['date']"
-                  :url="'/news/' . $article['slug']"
-              />
-          @endforeach
-      @endslot
-  
-      @slot('categories')
-          <ul class="space-y-2">
-            @php
-              $categories = ['cat', 'dog'];
-            @endphp
-              @foreach($categories as $category)
-              <li>
-                  <a href="#" class="text-gray-600 hover:text-blue-800 transition-colors duration-200">
-                      {{ $category}}
-                  </a>
-              </li>
-              @endforeach
-          </ul>
-      @endslot
-  
-      @slot('comments')
-          @php  
-          $recentComments = [['content' => "Ipsusm",'author' => 'Doe'],['content' => "Ipsum",'author' => 'Doe'],['content' => "Ipsum",'author' => 'Doe'],['content' => "Lorem",'author' => 'John'],['content' => "Ipsum",'author' => 'Doe'],['content' => "Ipsum",'author' => 'Doe'],['content' => "Ipsum",'author' => 'Doe'],['content' => "Ipsum",'author' => 'Doe'],['content' => "Ipsum",'author' => 'Doe'],['content' => "Ipsum",'author' => 'Doe'],['content' => "Ipsum",'author' => 'Doe'],['content' => "Ipsum",'author' => 'Doe'],['content' => "Ipsum",'author' => 'Doe'],['content' => "Ipsum",'author' => 'Doe'],['content' => "Ipsum",'author' => 'Doe'],['content' => "Ipsum",'author' => 'Doe'],['content' => "Ipsum",'author' => 'Doe'],['content' => "Ipsum",'author' => 'Doe'],['content' => "Ipsum",'author' => 'Doe'],['content' => "Ipsum",'author' => 'DoASe'],['content' => "Ipsum",'author' => 'Doe'],['content' => "Ipsum",'author' => 'Doe'],['content' => "Ipsum",'author' => 'Doer']];
-          @endphp
-          <x-comments :comments="$recentComments" />
-      @endslot
-  </x-news-layout>
+  <section class="container mx-auto px-6 py-12 flex flex-col md:flex-row items-center" x-data="{
+        images: [
+            { url: 'https://penguinui.s3.amazonaws.com/component-assets/carousel/default-slide-1.webp', title: 'Visi Perusahaan' },
+            { url: 'https://penguinui.s3.amazonaws.com/component-assets/carousel/default-slide-2.webp', title: 'Misi Kami' },
+            { url: 'https://penguinui.s3.amazonaws.com/component-assets/carousel/default-slide-3.webp', title: 'Tim Profesional' }
+        ],
+        activeIndex: 0,
+        next() {
+            this.activeIndex = (this.activeIndex + 1) % this.images.length;
+        },
+        prev() {
+            this.activeIndex = (this.activeIndex - 1 + this.images.length) % this.images.length;
+        }
+    }" x-init="setInterval(() => next(), 5000)">
+    
+    <!-- Carousel -->
+    <div class="w-full md:w-1/2 relative">
+        <div class="overflow-hidden rounded-lg shadow-lg">
+            <template x-for="(image, index) in images" :key="index">
+                <div x-show="index === activeIndex" class="relative">
+                    <img :src="image.url" class="w-full h-auto">
+                    <div class="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 text-white text-center p-2 text-sm">
+                        <span x-text="image.title"></span>
+                    </div>
+                </div>
+            </template>
+        </div>
+        <button @click="prev" class="absolute top-1/2 left-2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full">&#10094;</button>
+        <button @click="next" class="absolute top-1/2 right-2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full">&#10095;</button>
+      </div>
+      
+      <!-- About Us Description -->
+      <div class="w-full md:w-1/2 md:pl-12 mt-6 md:mt-0">
+        <h2 class="text-3xl font-bold mb-4">Tentang Kami</h2>
+        <p class="text-gray-700">Kami adalah perusahaan yang berkomitmen untuk memberikan layanan terbaik kepada pelanggan kami. Dengan visi yang kuat dan tim profesional, kami terus berkembang untuk menciptakan inovasi yang berdampak positif.</p>
+        <p class="mt-4 text-gray-700">Misi kami adalah memberikan solusi terbaik dan membangun hubungan jangka panjang dengan pelanggan kami.</p>
+        <a href="{{route('about')}}" class="mt-6 inline-block bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">Read More</a>
+    </div>
+</section>
+
+<x-news-layout>
+    @slot('newsGrid')
+        @foreach($news as $article)
+            <x-news-item 
+                :title="$article->title"
+                :author="$article->author"
+                :image="$article->image"
+                :date="$article->updated_at->format('d M Y')"
+                :url="'/news/' . $article['slug']"
+            />
+        @endforeach
+    @endslot
+
+    @slot('categories')
+        <ul class="space-y-2">
+            {{-- Categories --}}
+        </ul>
+    @endslot
+
+    @slot('comments')
+        {{-- Comments --}}
+    @endslot
+
+    @slot('pagination')
+        {{ $news->links('pagination::tailwind') }}
+    @endslot
+</x-news-layout>
+
+
+
+  {{-- <div>ss</div> --}}
 @endsection
