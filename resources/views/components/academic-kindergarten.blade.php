@@ -5,19 +5,17 @@
   <div class="mt-4">
       <div class="flex justify-center items-center gap-2 py-2">
           <img src="{{ asset('icons/calendar-b.svg') }}" alt="Calendar" class="w-5 h-5">
-          <p>{{ $days }}</p>
+          <p>{!! clean($days) !!}</p>
       </div>
       <div class="flex justify-center items-center gap-2">
           <img src="{{ asset('icons/clock-b.svg') }}" alt="Clock" class="w-5 h-5">
-          <p>{{ $time }}</p>
+          <p>{!! clean($time ) !!}</p>
       </div>
   </div>
 
   <div class="py-3">
       <ul class="pl-5 space-y-1">
-          @foreach ($points as $point)
-              <li>{{ $point }}</li>
-          @endforeach
+        {!! clean($points) !!}
       </ul>
   </div>
 </div>

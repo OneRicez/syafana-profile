@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+@section('title','Secondary')
 @section('content')
 <div class=" mx-auto px-6 lg:px-8">
   <x-breadcrumb 
@@ -16,7 +16,8 @@
       'dropdown' => [
           ['label' => 'Primary', 'url' => route('academic.primary')],
           ['label' => 'Secondary', 'url' => route('academic.secondary')],
-          ['label' => 'Kindergarten', 'url' => route('academic.kindergarten')]
+          ['label' => 'Kindergarten', 'url' => route('academic.kindergarten')],
+          ['label' => 'Boarding', 'url' => route('academic.boarding')]
       ]
     ],
   ]"
@@ -42,6 +43,16 @@
     </div>
   </div>
 
-  {{-- <x-campus-card> --}}
+  <div class="container mx-auto">
+    @foreach ($campuses as $item)
+      <x-campus-card 
+        :title="$item['title']"
+        :alamat="$item['address']"
+        :notelp="$item['phone']"
+        :img="$item['image']"
+        :maps="strip_tags($item['maps'])"
+      />  
+    @endforeach
+  </div>
 </div>
 @endsection

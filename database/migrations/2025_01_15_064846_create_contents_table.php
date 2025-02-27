@@ -13,10 +13,15 @@ return new class extends Migration
     {
         Schema::create('contents', function (Blueprint $table) {
             $table->id();
-            $table->string('page');
+            $table->unsignedBigInteger('page_id');
             $table->string('description');
-            $table->string('content');
-            $table->unique(['page','description']);
+            $table->enum('type',['text','image']);
+            $table->mediumText('content')->nullable();
+            $table->string('url');
+            $table->string('img_path')->nullable();
+            $table->string('alt')->nullable();
+            $table->enum('status',['show','disabled'])->default('disabled');
+            $table->unique(['page_id','description']);
             $table->timestamps();
         });
     }
@@ -25,7 +30,8 @@ return new class extends Migration
      * Reverse the migrations.
      */
     public function down(): void
-    {
-        Schema::dropIfExists('contents');
+    {   
+        
+        // Schema::dropIfExists('contents');
     }
 };

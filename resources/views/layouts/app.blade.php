@@ -2,8 +2,9 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('title')</title>
+    <title>@yield('title') - Syafana Islamic School</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+
     <style>
         [x-cloak] {
             display: none !important;
@@ -31,9 +32,11 @@
         }
     </style>
     <script src="https://cdn.jsdelivr.net/npm/alpinejs" defer></script>
+    <script src="{{ asset('js/news-pagination.js') }}" defer></script>
 </head>
+
 <body class="antialiased" x-data="{ pageLoaded: false }" x-init="() => { pageLoaded = true }">
-  <main x-cloak>
+    <main x-cloak>
     @include('partials.top-header')
     <x-navbar/>
     @yield('content')

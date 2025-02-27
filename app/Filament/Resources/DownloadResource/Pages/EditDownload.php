@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Filament\Resources\ContentResource\Pages;
+namespace App\Filament\Resources\DownloadResource\Pages;
 
-use App\Filament\Resources\ContentResource;
+use App\Filament\Resources\DownloadResource;
 use Filament\Actions;
 use Filament\Resources\Pages\EditRecord;
 
-class EditContent extends EditRecord
+class EditDownload extends EditRecord
 {
-    protected static string $resource = ContentResource::class;
+    protected static string $resource = DownloadResource::class;
 
     protected function getHeaderActions(): array
     {

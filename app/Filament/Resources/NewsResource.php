@@ -54,11 +54,7 @@ class NewsResource extends Resource
                 ->image()
                 ->required(),            
                 Select::make('category')
-                    ->options([
-                        'tech' => 'Tech',
-                        'lifestyle' => 'Lifestyle',
-                        'news' => 'News',
-                    ])
+                    ->relationship(name:'category',titleAttribute:'name')
                     ->required(),
                 TextInput::make('author')
                     ->required()

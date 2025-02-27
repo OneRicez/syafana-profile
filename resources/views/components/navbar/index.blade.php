@@ -7,7 +7,13 @@
 >
     <div class="container mx-auto px-3 lg:xl:px-10 flex justify-between items-center font-bold">
         {{-- Logo --}}
-        <a href="/" class="text-xl">{{ $logo ?? '' }}</a>
+        <div x-show="scrolled" x-transition:enter="transition ease-out duration-300"
+             x-transition:enter-start="opacity-0 transform scale-90"
+             x-transition:enter-end="opacity-100 transform scale-100"
+             class="flex items-center space-x-2">
+            <img src="{{asset('storage/'.$headerData['logo'])}}" alt="Logo" class="h-8 w-auto">
+            {{-- <span class="text-lg font-semibold">Syafana</span> --}}
+        </div>
         
         {{-- Navbar Links - Desktop with Hover --}}
         <div class="hidden lg:flex space-x-8">
@@ -58,7 +64,7 @@
                         <a href="{{route('academic.kindergarten')}}" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Kindergarten</a>
                         <a href="{{route('academic.primary')}}" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Primary</a>
                         <a href="{{route('academic.secondary')}}" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Secondary</a>
-                        <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Boarding School</a>
+                        <a href="{{route('academic.boarding')}}" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Boarding School</a>
                     </div>
                 </div>
             </div>
@@ -73,7 +79,7 @@
                         <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">E-Library</a>
                         <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Special Program</a>
                         <a href="{{route('gallery')}}" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Gallery</a>
-                        <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Facilities</a>
+                        <a href="{{route('facility')}}" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Facilities</a>
                     </div>
                 </div>
             </div>
@@ -85,10 +91,24 @@
                 <div class="absolute left-0 hidden group-hover:block pt-2">
                     <div class="bg-white rounded-md shadow-lg py-2 w-48">
                         <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">File</a>
-                        <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">S-Digest</a>
+                        {{-- <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">S-Digest</a> --}}
                         <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Brochure</a>
                     </div>
                 </div>
+            </div>
+        </div>
+
+        <div x-show="scrolled" x-transition:enter="transition ease-out duration-300"
+             x-transition:enter-start="opacity-0 transform scale-90"
+             x-transition:enter-end="opacity-100 transform scale-100"
+             class="hidden md:flex items-center space-x-4 text-sm">
+            <div class="flex items-center space-x-2">
+                <img src="{{ asset('icons/telephone.svg') }}" class="h-5 w-5">
+                <a href={{route('contact-us')}} class="hover:text-yellow-500">Contact Us</a>
+            </div>
+            <div class="flex items-center space-x-2">
+                <img src="{{ asset('icons/mail.svg') }}" class="h-5 w-5">
+                <span>info@syafana.sch.id</span>
             </div>
         </div>
 
@@ -182,7 +202,7 @@
                             <a href="{{route('academic.kindergarten')}}" class="block py-2 hover:text-blue-600">Kindergarten</a>
                             <a href="{{route('academic.primary')}}" class="block py-2 hover:text-blue-600">Primary</a>
                             <a href="{{route('academic.secondary')}}" class="block py-2 hover:text-blue-600">Secondary</a>
-                            <a href="{{route('academic')}}" class="block py-2 hover:text-blue-600">Boarding School</a>
+                            <a href="{{route('academic.boarding')}}" class="block py-2 hover:text-blue-600">Boarding School</a>
                         </div>
                     </div>
 
@@ -239,7 +259,7 @@
                             class="pl-4"
                         >
                             <a href="#" class="block py-2 hover:text-blue-600">File</a>
-                            <a href="#" class="block py-2 hover:text-blue-600">S-Digest</a>
+                            {{-- <a href="#" class="block py-2 hover:text-blue-600">S-Digest</a> --}}
                             <a href="#" class="block py-2 hover:text-blue-600">Brochure</a>
                         </div>
                     </div>

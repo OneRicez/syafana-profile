@@ -1,25 +1,42 @@
-{{-- resources/views/components/carousel.blade.php --}}
 <div
     x-data="{
         slides: @js($slides),
         currentSlideIndex: 1,
+        autoSlideInterval: null,
+
         previous() {
-            if (this.currentSlideIndex > 1) {
-                this.currentSlideIndex = this.currentSlideIndex - 1
-            } else {
-                this.currentSlideIndex = this.slides.length
-            }
+            this.currentSlideIndex = this.currentSlideIndex > 1 
+                ? this.currentSlideIndex - 1 
+                : this.slides.length;
         },
+
         next() {
-            if (this.currentSlideIndex < this.slides.length) {
-                this.currentSlideIndex = this.currentSlideIndex + 1
-            } else {
-                this.currentSlideIndex = 1
-            }
+            this.currentSlideIndex = this.currentSlideIndex < this.slides.length
+                ? this.currentSlideIndex + 1 
+                : 1;
         },
+
+        startAutoSlide() {
+            this.autoSlideInterval = setInterval(() => {
+                this.next();
+            }, 5000); 
+        },
+
+        stopAutoSlide() {
+            clearInterval(this.autoSlideInterval);
+        },
+
+        init() {
+            this.startAutoSlide();
+
+            // Hentikan auto-slide saat pengguna menghover carousel
+            $el.addEventListener('mouseenter', () => this.stopAutoSlide());
+            $el.addEventListener('mouseleave', () => this.startAutoSlide());
+        }
     }"
-    class="relative w-full overflow-hidden "
+    class="relative w-full overflow-hidden mt-3"
 >
+
     {{-- Previous button --}}
     <button
         type="button"
@@ -52,11 +69,11 @@
                 class="absolute inset-0"
                 x-transition.opacity.duration.1000ms
             >
-                <img
-                    class="absolute w-full h-full inset-0 object-cover text-neutral-600"
-                    :src="slide.imgSrc"
-                    :alt="slide.imgAlt"
-                />
+            <img
+                class="absolute w-full h-full inset-0 object-contain text-neutral-600"
+                :src="'/storage/' + slide.img_path"
+                :alt="slide.alt"
+            />
             </div>
         </template>
     </div>

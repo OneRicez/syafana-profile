@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class News extends Model
 {
     use HasFactory;
-    protected $fillable = ['title','slug','content','image','category','status','author'];
+    protected $fillable = ['title','slug','content','image','category_id','status','author'];
 
     public function sluggable(): array
     {
@@ -27,5 +27,10 @@ class News extends Model
 
     public function comments(): HasMany{
         return $this->hasMany(Comment::class, 'news_id', 'id');
+    }
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class, 'category_id', 'id');
     }
 }

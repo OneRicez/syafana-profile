@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'About - Syafana Islamic School')
+@section('title', 'About')
 
 @section('content')
 <section class="scroll-smooth">
@@ -9,8 +9,9 @@
   <section id="history" class="px-10 py-5" style="scroll-margin-top: 4rem">
     <p class="text-3xl font-ssprobold  text-[#091B8C]  font-light">History</p>
     <div class="flex flex-row gap-3">
-      <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Debitis nisi facere eaque, hic eligendi fugiat exercitationem molestias eos quam dolore vero maxime at illo odio laudantium voluptatibus amet, temporibus dolor.</p>
-      <div class="w-96 h-48 bg-gray-500"></div>
+      {!! clean($history->content) !!}
+      <img src="{{ asset('storage/' . $history_image->img_path) }}" alt="{{ $history_image->alt }}" class="w-1/4 h-1/2" />
+
     </div>
   </section>
 
@@ -37,15 +38,19 @@
     <span class="text-3xl font-ssprobold  text-[#091B8C]  font-light">Welcome</span>
     <div class="flex flex-row gap-3">
       <figure>
-        <div class="w-96 h-48 bg-gray-500"></div>
-        <figcaption>aaa</figcaption>
+        <img src="{{ asset('storage/' . $welcome_image->img_path) }}" alt="{{ $history_image->alt }}" class="w-1/2 h-3/4" />
+        <figcaption>{{$welcome_image->alt}}</figcaption>
       </figure>
-      <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Debitis nisi facere eaque, hic eligendi fugiat exercitationem molestias eos quam dolore vero maxime at illo odio laudantium voluptatibus amet, temporibus dolor.</p>
+      {!! clean($welcome->content) !!}
     </div>
   </section>
     
-  <section id="orgstructure"  class="px-10 py-5" style="scroll-margin-top: 4rem">
-
+  <section id="orgstructure" class="px-10 py-5 flex flex-col items-center" style="scroll-margin-top: 4rem">
+    <p class="text-3xl font-ssprobold text-[#091B8C] font-light justify-start">Organization Structure</p>
+    @foreach ($org_structure as $item)
+      <img src="{{ asset('storage/' . $item['img_path']) }}" alt="{{ $item['alt'] }}" class="w-1/2 h-3/4 mt-5" />
+    @endforeach
   </section>
+
 </section>
 @endsection
