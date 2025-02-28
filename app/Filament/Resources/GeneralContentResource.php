@@ -22,7 +22,7 @@ class GeneralContentResource extends Resource
 {
     protected static ?string $model = Content::class;
     protected static ?string $label = 'General Management';
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-document';
 
     public static function form(Forms\Form $form): Forms\Form
     {

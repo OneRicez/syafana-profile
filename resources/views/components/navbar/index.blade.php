@@ -90,7 +90,7 @@
                 <span class="absolute bottom-0 left-0 right-0 h-1 bg-yellow-500 rounded transform scale-x-0 transition-transform duration-200 ease-out group-hover:scale-x-100"></span>
                 <div class="absolute left-0 hidden group-hover:block pt-2">
                     <div class="bg-white rounded-md shadow-lg py-2 w-48">
-                        <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">File</a>
+                        <a href="{{route('download')}}" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">File</a>
                         {{-- <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">S-Digest</a> --}}
                         <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Brochure</a>
                     </div>
